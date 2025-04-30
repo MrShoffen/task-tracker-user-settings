@@ -29,4 +29,13 @@ public class UserSettings {
 
     @Column(name = "time_zone", nullable = false)
     private String timeZone;
+
+    public static UserSettings defaultUserSettings(UUID id, String timeZone) {
+        return UserSettings.builder()
+                .id(id)
+                .dailyNotificationsEnabled(true)
+                .dailyNotificationTime(LocalTime.MIDNIGHT)
+                .timeZone(timeZone)
+                .build();
+    }
 }

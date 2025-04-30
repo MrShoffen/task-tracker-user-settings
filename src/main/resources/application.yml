@@ -49,7 +49,7 @@ spring:
       key-deserializer: org.apache.kafka.common.serialization.UUIDDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       properties:
-        spring.json.trusted.packages: "org.mrshoffen.tasktracker.commons.kafka.event.user"
+        spring.json.trusted.packages: "org.mrshoffen.tasktracker.commons.kafka.event.*"
 
 server.port: ${PORT:0}
 
@@ -59,3 +59,4 @@ eureka:
       defaultZone: http://${discovery-service-user.server.hostname}:${discovery-service-user.server.port}/eureka
   instance:
     prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
